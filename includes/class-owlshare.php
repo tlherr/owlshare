@@ -96,6 +96,9 @@ class owlshare {
 
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), 10, 1 );
+
 		// Load API for generic admin functions
 		if ( is_admin() ) {
 			$this->admin = new owlshare_Admin_API();
