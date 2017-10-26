@@ -138,9 +138,9 @@ class owlshare_Settings {
 				array(
 					'id' 			=> 'facebook_follow_link',
 					'label'			=> __( 'Facebook Follow Link' , 'owlshare' ),
-					'description'	=> __( 'The title used by default for the Facebook share button (a standard one will be used if left empty).', 'owlshare' ),
+					'description'	=> __( 'The link used by default for following you on Facebook. Change this to point to your own social profile page on Facebook.', 'owlshare' ),
 					'type'			=> 'text',
-					'default'		=> 'Share on Facebook',
+					'default'		=> 'https://www.facebook.com/facebook',
 					'placeholder'	=> __( 'Placeholder text', 'owlshare' )
 				),
 			)

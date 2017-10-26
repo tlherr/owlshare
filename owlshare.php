@@ -2,10 +2,10 @@
 /*
  * Plugin Name: owlshare
  * Version: 1.0
- * Plugin URI: http://www.hughlashbrooke.com/
- * Description: This is your starter template for your next WordPress plugin.
- * Author: Hugh Lashbrooke
- * Author URI: http://www.hughlashbrooke.com/
+ * Plugin URI: https://tlherr.com
+ * Description: Provide font awesome sharing buttons on posts
+ * Author: Thomas Herr
+ * Author URI: https://tlherr.com
  * Requires at least: 4.0
  * Tested up to: 4.0
  *
@@ -13,7 +13,7 @@
  * Domain Path: /lang/
  *
  * @package WordPress
- * @author Hugh Lashbrooke
+ * @author Thomas Herr
  * @since 1.0.0
  */
 
@@ -45,3 +45,33 @@ function owlshare () {
 }
 
 owlshare();
+
+add_filter( 'the_content', 'owlshare_add_share_media' );
+
+/**
+ * Add share media to end of post
+ *
+ * @uses is_single()
+ */
+function owlshare_add_share_media( $content ) {
+
+	if ( is_single() ) {
+		$content .= '<div class="share-link-wrapper row">';
+		$content .= '<h3 class="page-level-title col-12" id="share-title"><i class="fa fa-share-alt"></i> Share</h3>';
+		$content .= '<div id="post-sharing" data-share-url="'.get_permalink().'" data-share-title="'.get_the_title().'" ></div>';
+		$content .= '</div>';
+	}
+
+	// Returns the content.
+	return $content;
+}
+
+
+function owlshare_register_js() {
+	wp_register_script('owlshare_lib_script','/wp-content/plugins/owlshare/assets/js/frontend.min.js', array('jquery'), '1.0', true);
+	wp_register_script('owlshare_share_script','/wp-content/plugins/owlshare/assets/js/share.js', array('jquery'), '1.0', true);
+
+	wp_enqueue_script('owlshare_lib_script');
+	wp_enqueue_script('owlshare_share_script');
+}
+add_action('wp_enqueue_scripts', 'owlshare_register_js');

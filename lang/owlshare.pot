@@ -399,9 +399,9 @@ msgid "http://www.hughlashbrooke.com/"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Hugh Lashbrooke"
+msgid "Thomas Herr"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://www.hughlashbrooke.com/"
+msgid "https://tlherr.com"
 msgstr ""
